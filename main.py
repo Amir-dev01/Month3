@@ -38,11 +38,6 @@ async def info_handler(message):
     await message.reply (f"Случайное имя {random_name}")
 
 
-@dp.message_handler()
-async def echo_handler(message):
-    await message.answer("Привет")
-
-
 async def main():
     # запуск бота
     await dp.start_polling()
