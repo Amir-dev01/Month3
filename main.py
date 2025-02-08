@@ -1,46 +1,23 @@
-import random
 import asyncio
-from aiogram import Bot, Dispatcher
-from dotenv import dotenv_values
+import logging
 
+from bot_config import dp
+from handlers import (
+    start,
+    myinfo,
+    random_names,
 
-token = dotenv_values(".env")["BOT_TOKEN"]
-bot = Bot(token=token)
-dp = Dispatcher(bot)
-
-
-unique_users = set()
-@dp.message_handler(commands= ['start'])
-async def start_handler(message):
-    user = message.from_user
-    unique_users.add(user.id)
-    await message.answer(f"Привет, {user.first_name}, наш бот обслуживает уже {len(unique_users)} пользователей.")
-
-
-@dp.message_handler(commands= ['myinfo'])
-async def info_handler(message):
-    user = message.from_user
-    await message.answer(f"Ваше имя: {user.first_name} ")
-
-    if user.last_name is not None:
-        await message.answer(f"Ваша фамилия {user.last_name} ")
-
-    await message.answer(f"ваш id: {user.id}")
-
-    if user.username is not None:
-        await message.answer (f"Ваш никнейм {user.username}")
-
-names = ["Alex","John","Peter","Steve","Robert"]
-
-@dp.message_handler(commands= ['random'])
-async def info_handler(message):
-    random_name = random.choice(names)
-    await message.reply (f"Случайное имя {random_name}")
-
+)
 
 async def main():
+    start.register_handlers(dp)
+    myinfo.register_handlers(dp)
+    random_names.register_handlers(dp)
     # запуск бота
     await dp.start_polling()
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     asyncio.run(main())
+
