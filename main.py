@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from bot_config import dp
+from bot_config import dp,database
 from handlers import (
     start,
     myinfo,
@@ -15,6 +15,7 @@ async def main():
     myinfo.register_handlers(dp)
     random_names.register_handlers(dp)
     complaint_dialog.register_handlers(dp)
+    database.create_tables()
     # запуск бота
     await dp.start_polling()
 
