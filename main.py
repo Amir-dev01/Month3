@@ -7,6 +7,7 @@ from handlers import (
     myinfo,
     random_names,
     complaint_dialog,
+    store_fsm
 
 )
 
@@ -15,6 +16,7 @@ async def main():
     myinfo.register_handlers(dp)
     random_names.register_handlers(dp)
     complaint_dialog.register_handlers(dp)
+    store_fsm.register_handlers(dp)
     database.create_tables()
     # запуск бота
     await dp.start_polling()
@@ -23,4 +25,3 @@ async def main():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     asyncio.run(main())
-

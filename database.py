@@ -16,6 +16,27 @@ class Database:
             text TEXT                       
             )          
             ''')
+
+            cursor.execute("""
+                           CREATE TABLE IF NOT EXISTS store (
+                               id INTEGER PRIMARY KEY AUTOINCREMENT,
+                               name_product TEXT,
+                               size TEXT,
+                               price TEXT,
+                               photo TEXT,
+                               product_id TEXT
+                           )
+                       """)
+
+            cursor.execute("""
+                           CREATE TABLE IF NOT EXISTS products_details (
+                               id INTEGER PRIMARY KEY AUTOINCREMENT,
+                               product_id INTEGER,
+                               category TEXT,
+                               info_product TEXT
+                           )
+                       """)
+
             conn.commit()
 
     def add_complaint(self,data:dict):

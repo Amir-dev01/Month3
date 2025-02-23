@@ -27,6 +27,7 @@ async def start_handler(message:types.Message):
 
     ])
     await message.answer(f'Здравствуйте {message.from_user.first_name}, это бот  Dodo Pizza',reply_markup=keyb)
+    await message.answer(f'ваш айди -{message.from_user.id}')
 
 async def address_handler(callback: CallbackQuery):
     await callback.message.answer('Юнусалиева 179/2')
