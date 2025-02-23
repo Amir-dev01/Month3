@@ -108,7 +108,7 @@ def register_handlers(dp: Dispatcher):
     dp.register_message_handler(load_price, state=StoreFSM.price)
     dp.register_message_handler(load_size, state=StoreFSM.size)
     dp.register_message_handler(load_product_id, state=StoreFSM.product_id)
-    dp.register_message_handler(load_infoproduct, state=StoreFSM.infoproduct)
+    dp.register_message_handler(load_info_product, state=StoreFSM.info_product)
     dp.register_message_handler(load_photo, state=StoreFSM.photo,
                                 content_types=['photo'])
     dp.register_message_handler(submit_load, state=StoreFSM.submit)
