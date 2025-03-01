@@ -9,7 +9,8 @@ from handlers import (
     random_names,
     complaint_dialog,
     store_fsm,
-    send_products
+    send_products,
+    edit_product
 
 )
 
@@ -21,6 +22,8 @@ async def main():
     random_names.register_handlers(dp)
     complaint_dialog.register_handlers(dp)
     store_fsm.register_handlers(dp)
+    send_products.register_handlers(dp)
+    edit_product.register_handlers(dp)
     # database.create_tables()
     # запуск бота
     await create_tables()

@@ -13,15 +13,15 @@ CREATE_TABLE_store_details = """
     CREATE TABLE IF NOT EXISTS store_details (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     category TEXT,
-    product_id TEXT UNIQUE,
+    product_id TEXT 
     )
 """
 
 CREATE_TABLE_collection = """
     CREATE TABLE IF NOT EXISTS collection_products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    product_id TEXT UNIQUE,
-    collection TEXT,
+    product_id TEXT ,
+    collection TEXT
     )
 """
 
